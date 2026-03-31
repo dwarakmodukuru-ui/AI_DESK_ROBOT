@@ -1,0 +1,46 @@
+import speech_recognition as sr
+
+r = sr.Recognizer()
+with sr.Microphone() as source:
+    print("Listening...")
+    audio = r.listen(source)
+
+try:
+    text = r.recognize_google(audio)
+    print("You said:", text)
+except:
+    print("Error")
+import pyttsx3
+
+engine = pyttsx3.init()
+engine.say("Hello, I am your AI robot")
+engine.runAndWait()
+import RPi.GPIO as GPIO
+import time
+
+GPIO.setmode(GPIO.BCM)
+servo_pin = 18
+GPIO.setup(servo_pin, GPIO.OUT)
+
+pwm = GPIO.PWM(servo_pin, 50)
+pwm.start(0)
+
+def set_angle(angle):
+    duty = 2 + (angle / 18)
+    pwm.ChangeDutyCycle(duty)
+    time.sleep(0.5)
+
+set_angle(90)
+pwm.stop()
+GPIO.cleanup()
+import cv2
+
+cam = cv2.VideoCapture(0)
+while True:
+    ret, frame = cam.read()
+    cv2.imshow("Camera", frame)
+    if cv2.waitKey(1) == 27:
+        break
+
+cam.release()
+cv2.destroyAllWindows()

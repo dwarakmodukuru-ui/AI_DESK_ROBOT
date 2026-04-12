@@ -1,5 +1,6 @@
 AI Desk Robot (Interactive Smart
 Companion)
+3D Fusion Design Link:- https://gmail5401024.autodesk360.com/g/shares/SH90d2dQT28d5b602811520521bb419e3404
 1. Objective
 The objective of this project is to design and develop an AI-powered desk robot capable of:
 • 🗣 Communicating with users through voice
